@@ -1,0 +1,20 @@
+google/protobuf/compiler/js/well_known_types_embed.lo: \
+  google/protobuf/compiler/js/well_known_types_embed.cc \
+  google/protobuf/compiler/js/well_known_types_embed.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/stddef.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/__config \
+  /Library/Developer/CommandLineTools/usr/lib/clang/9.1.0/include/stddef.h \
+  /Library/Developer/CommandLineTools/usr/lib/clang/9.1.0/include/__stddef_max_align_t.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/__nullptr
+
+google/protobuf/compiler/js/well_known_types_embed.h:
+
+/Library/Developer/CommandLineTools/usr/include/c++/v1/stddef.h:
+
+/Library/Developer/CommandLineTools/usr/include/c++/v1/__config:
+
+/Library/Developer/CommandLineTools/usr/lib/clang/9.1.0/include/stddef.h:
+
+/Library/Developer/CommandLineTools/usr/lib/clang/9.1.0/include/__stddef_max_align_t.h:
+
+/Library/Developer/CommandLineTools/usr/include/c++/v1/__nullptr:
