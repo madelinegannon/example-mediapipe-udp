@@ -18,7 +18,7 @@ If you've never used [Bazel](https://bazel.build/) before, the build system and 
 
 ---
 
-#### We're going to modify MediaPipe's desktop hand tracking demo to stream out landmarks and bounding rectangles over UDP.
+#### We're going to modify MediaPipe's desktop hand tracking example to stream out landmarks and bounding rectangles over UDP.
 ![MediaPipe to openFrameworks](https://github.com/madelinegannon/example-mediapipe-udp/blob/master/assets/example-mediapipe-udp.png)
 
 ## 1. Update the Graph Definition to Include our new PassThrough Calculator
@@ -53,25 +53,16 @@ node {
 When you add in the custom MyPassThroughCalculator your graph should look like this:
 ![Updated Graph Structure](https://github.com/madelinegannon/example-mediapipe-udp/blob/master/assets/mediapipe_graph_view.png)
 
-## 2. Modify `my_pass_through_calculator.cc` 
-_Add Detections, Landmarks, and Hand Rectangles to Calculator_
+## 2. Making a Custom Calculator
+_Adding UDP, Detections, Landmarks, and Hand Rectangles to the PassThrough Calculator_
 
-1. In `my_pass_though_calculator.cc` include the protobuf headers for your input streams:
-```
-#include "mediapipe/framework/formats/landmark.pb.h"
-#include "mediapipe/framework/formats/rect.pb.h"
-#include "mediapipe/framework/formats/detection.pb.h"
-```
-2. Declare the Tag for each input stream. These are defined in `.pbtxt` graph file of your demo — for example: `mdeiapipe/graph/hand_tracking/hand_tracking_desktop_live.pbtxt`
-```
-constexpr char kLandmarksTag[] = "LANDMARKS";
-constexpr char kNormLandmarksTag[] = "NORM_LANDMARKS";
-constexpr char kNormRectTag[] = "NORM_RECT";
-constexpr char kDetectionsTag[] = "DETECTIONS";
-```
+1. Copy the file _src/mediapipe/my_pass_though_calculator.cc_ to your Mediapipe calculators directory _mediapipe/calculators/core_.
+
+2. The main differences between `my_pass_though_calculator.cc` and the original `pass_though_calculator.cc` are that it adds UDP streaming, and uses Landmark, Rect, and Detection protobufs in the `::mediapipe::Status Process()` function. Next we need to modify the graph file to declare the Tag of the calculators input and stream. 
 
 ## 3. Modifying Calculators BUILD file
-_Include new dependencies in mediapipe/calculators/core/BUILD_
+
+1. Add the following in _mediapipe/calculators/core/BUILD_ to include `my_pass_through_calculator` dependencies:
 
 ```
 cc_library(
@@ -91,7 +82,7 @@ cc_library(
 )
 ```
 
-You should be able to build and run the mediapipe hand_tracking_desktop_live example now without any errors:
+You should be able to build and run the mediapipe hand_tracking_desktop_live example now without any errors. In your mediapipe root folder, run:
 
 ```bash
 bazel build -c opt --define MEDIAPIPE_DISABLE_GPU=1     mediapipe/examples/desktop/hand_tracking:hand_tracking_cpu
