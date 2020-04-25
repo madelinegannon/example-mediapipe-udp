@@ -14,8 +14,12 @@ Beigin by installing MediaPipe on your system using [google's instructions](http
 
 Then install and setup Google [Protobufs](https://developers.google.com/protocol-buffers) for openFrameworks using my previous [tutorial](https://github.com/madelinegannon/protobuf_tutorial).
 
----
 If you've never used [Bazel](https://bazel.build/) before, the build system and organization of Mediapipe can be _really_ confusing. I try to go through step-by-step below, but you can find more information in the [MediaPipe Docs](https://mediapipe.readthedocs.io/en/latest/index.html).
+
+---
+
+#### We're going to modify MediaPipe's desktop hand tracking demo to stream out landmarks and bounding rectangles over UDP.
+![MediaPipe to openFrameworks](https://github.com/madelinegannon/example-mediapipe-udp/blob/master/assets/example-mediapipe-udp.png)
 
 ## 1. Update the Graph Definition to Include our new PassThrough Calculator
 _Modify mediapipe/graphs/hand_tracking/hand_tracking_desktop_live.pbtxt_
@@ -45,6 +49,9 @@ node {
 }
 ```
 `NOTE` You can visualize the graph to test that inputs and outpus match up at https://viz.mediapipe.dev/
+
+When you add in the custom MyPassThroughCalculator your graph should look like this:
+![Updated Graph Structure](https://github.com/madelinegannon/example-mediapipe-udp/blob/master/assets/mediapipe_graph_view.png)
 
 ## 2. Modify `my_pass_through_calculator.cc` 
 _Add Detections, Landmarks, and Hand Rectangles to Calculator_
