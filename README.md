@@ -115,23 +115,24 @@ So the hacky workaround I found was to build `wrapper_hand_tracking.proto` with 
 ## Running the Example
 When you run the MediaPipe example _hand_tracking_desktop_live_, it broadcasts any hand landmarks and rectangles on port `localhost:8080`. The openFrameworks example _example-protobuf-udp_ is listening for those protobufs on port 8080.
 
-1. From your Mediapipe root directory, run _hand_tracking_desktop_live_:
+#### Run the MediaPipe Example
+1. From your MediaPipe root directory, run _hand_tracking_desktop_live_:
 
 ```
 GLOG_logtostderr=1 bazel-bin/mediapipe/examples/desktop/hand_tracking/hand_tracking_cpu     --calculator_graph_config_file=mediapipe/graphs/hand_tracking/hand_tracking_desktop_live.pbtxt
 ```
 You should see a video feed of yourself, with hand landmarks and bounding rectangle overlaid.
 
-2. Build _example-protobuf-udp_ in openFramework's Project Generator
+#### Run the openFrameworks Example
+1. Build _example-protobuf-udp_ in openFramework's Project Generator
 
-3. Drag and drop the `/libs` directory into the Xcode Project Pane and select _Add to Target_.
+2. Drag and drop the `/libs` directory into the Xcode Project Pane and select _Add to Target_.
 
-4. Drag and drop your newly generated `wrapper_hand_tracking.pb.cc` and `wrapper_hand_tracking.pb.h` files into the `/src` directory in the Project Pane and select _Add to Target_.
+3. Drag and drop your newly generated `wrapper_hand_tracking.pb.cc` and `wrapper_hand_tracking.pb.h` files into the `/src` directory in the Project Pane and select _Add to Target_.
 
-5. Link the `libprotobuf.a` static library from `/libs/protobuf/lib/osx` in _Project Settings > General > Linked Frameworks and Libraries_.
+4. Link the `libprotobuf.a` static library from `/libs/protobuf/lib/osx` in _Project Settings > General > Linked Frameworks and Libraries_.
 
-6. In _Project Settings > Build Settings_, add the following to _Header Search Paths_:
-
+5. In _Project Settings > Build Settings_, add the following to _Header Search Paths_:
 ```
 $(PROJECT_DIR)/libs/protobuf/include
 $(PROJECT_DIR)/libs/protobuf/include/google
@@ -141,7 +142,7 @@ $(PROJECT_DIR)/libs/protobuf/include/google/io
 $(PROJECT_DIR)/libs/protobuf/include/google/stubs
 $(PROJECT_DIR)/libs/protobuf/include/google/util
 ```
-7. Hit ⌘-r to Run.
+6. Hit ⌘-r to Run.
 
 You should see the numbered landmarks and bounding rectangle on a white screen. 
 
