@@ -5,6 +5,8 @@ MediaPipe is a cross-platform framework for building multimodal applied machine 
 
 This tutorial walks through how to stream MediaPipe data out over UDP, so any external app and receive and use the data.
 
+![Demo Gif](https://github.com/madelinegannon/example-mediapipe-udp/blob/master/assets/example-mediapipe-udp.gif)
+
 I show how to modify the mediapipe example _mediapipe/examples/desktop/hand_tracking_ to add in a new node that recieves hand tracking data as input, broadcasts that data over UDP on port 8080, and then passes the tracking data on to the rest of the graph as output.
 
 > Tested on macOS Mojave (10.14.6) and openFrameworks 0.10.1
@@ -113,8 +115,6 @@ So the hacky workaround I found was to build `wrapper_hand_tracking.proto` with 
      - There shouldn't be any errors now when you add `#include "wrapper_hand_tracking.pb.h"` to `ofApp.h`
      
 ## Running the Example
-
-[![Streaming MediaPipe Tracking Data over UDP](https://youtu.be/Cqs3f3Xkmzk/0.jpg)](https://youtu.be/Cqs3f3Xkmzk "Streaming MediaPipe Tracking Data over UDP")
 
 When you run the MediaPipe example _hand_tracking_desktop_live_, it broadcasts any hand landmarks and rectangles on port `localhost:8080`. The openFrameworks example _example-protobuf-udp_ is listening for those protobufs on port 8080.
 
