@@ -113,6 +113,9 @@ So the hacky workaround I found was to build `wrapper_hand_tracking.proto` with 
      - There shouldn't be any errors now when you add `#include "wrapper_hand_tracking.pb.h"` to `ofApp.h`
      
 ## Running the Example
+
+[![Streaming MediaPipe Tracking Data over UDP](https://youtu.be/Cqs3f3Xkmzk/0.jpg)](https://youtu.be/Cqs3f3Xkmzk "Streaming MediaPipe Tracking Data over UDP")
+
 When you run the MediaPipe example _hand_tracking_desktop_live_, it broadcasts any hand landmarks and rectangles on port `localhost:8080`. The openFrameworks example _example-protobuf-udp_ is listening for those protobufs on port 8080.
 
 #### Run the MediaPipe Example
