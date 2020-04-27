@@ -84,6 +84,25 @@ cc_library(
 )
 ```
 
+## 4. Modify the Graphs BUILD file
+
+1. Lastly, you need to modify the _mediapipe/graphs/hand_tracking/BUILD_ file to add the new calculator as a dependency:
+```
+cc_library(
+    name = "desktop_offline_calculators",
+    deps = [
+        "//mediapipe/calculators/core:flow_limiter_calculator",
+        "//mediapipe/calculators/core:gate_calculator",
+        "//mediapipe/calculators/core:immediate_mux_calculator",
+        "//mediapipe/calculators/core:packet_inner_join_calculator",
+        "//mediapipe/calculators/core:previous_loopback_calculator",
+        "//mediapipe/calculators/video:opencv_video_decoder_calculator",
+        "//mediapipe/calculators/video:opencv_video_encoder_calculator",
+        "//mediapipe/calculators/core:my_pass_through_calculator"
+    ],
+)
+```
+
 You should be able to build and run the mediapipe hand_tracking_desktop_live example now without any errors. In your mediapipe root directory, run:
 
 ```bash
