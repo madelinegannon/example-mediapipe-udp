@@ -103,6 +103,26 @@ cc_library(
 )
 ```
 
+## 5. Add the wrapper proto
+
+1.  Copy the `wrapper_hand_tracker.proto` in this repo's `/mediapipe` [directory](https://github.com/madelinegannon/example-mediapipe-udp/tree/master/mediapipe) into `mediapipe/framework/formats` directory.
+
+2. Add it and its dependencies to `mediapipe/framework/formats/BUILD`:
+
+```
+mediapipe_proto_library(
+    name = "wrapper_hand_tracking_proto",
+    srcs = ["wrapper_hand_tracking.proto"],
+    visibility = ["//visibility:public"],
+    deps = [
+      "//mediapipe/framework/formats:landmark_proto",
+      "//mediapipe/framework/formats:detection_proto",
+      "//mediapipe/framework/formats:rect_proto",
+    ],
+)
+```
+
+
 You should be able to build and run the mediapipe hand_tracking_desktop_live example now without any errors. In your mediapipe root directory, run:
 
 ```bash
