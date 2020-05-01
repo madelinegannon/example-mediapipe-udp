@@ -79,6 +79,7 @@ cc_library(
         "//mediapipe/framework/formats:landmark_cc_proto",
         "//mediapipe/framework/formats:rect_cc_proto",
         "//mediapipe/framework/formats:detection_cc_proto",
+        "//mediapipe/framework/formats:wrapper_hand_tracking_cc_proto",
     ],
     alwayslink = 1,
 )
