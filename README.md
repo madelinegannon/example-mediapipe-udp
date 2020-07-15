@@ -12,7 +12,7 @@ I show how to modify the mediapipe example _mediapipe/examples/desktop/hand_trac
 > Tested on macOS Mojave (10.14.6) and openFrameworks 0.10.1
 
 ---
-Beigin by installing MediaPipe on your system using [google's instructions](https://mediapipe.readthedocs.io/en/latest/install.html). 
+Beigin by installing MediaPipe on your system using [google's instructions](https://google.github.io/mediapipe/). 
 
 Then install and setup Google [Protobufs](https://developers.google.com/protocol-buffers) for openFrameworks using my previous [tutorial](https://github.com/madelinegannon/protobuf_tutorial).
 
